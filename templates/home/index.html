@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<script src="{% static 'js/anime-master/lib/anime.min.js' %}"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Chaki Chak</title>
+</head>
+<body>
+    <main class="pc_view">
+        {% include "blocks/menu/menu_pc.html" %}
+
+        <section class="first_sec" id="first_sec">
+            <div style="background-color: white; opacity: 1" id="first_sec_div"></div>
+        </section>
+
+        <section class="second_sec" id="second_sec" style="height: calc(100vh - 50px); width: 100vw;">
+            <section id="second_sec_sec">
+                <h2>JUST A</h2>
+                <h2 class="second_sec_sec_h2">HONEY</h2>
+                <h2>SWEET</h2>
+            </section>
+        </section>
+
+        <video src="{% static 'img/home/honey.mp4' %}" muted autoplay loop id="honey_animation" style=""></video>
+
+        <script>
+            let first_sec = document.getElementById("first_sec")
+            let second_sec = document.getElementById("second_sec")
+            let second_sec_sec = document.getElementById("second_sec_sec")
+            let first_sec_div = document.getElementById("first_sec_div")
+            let honey_animation = document.getElementById("honey_animation")
+
+            honey_animation.style.position = "fixed"
+            honey_animation.style.zIndex = "-20"
+            honey_animation.style.top = "0"
+            honey_animation.style.width = "100vw"
+
+            first_sec_div.style.height = "100vh"
+            first_sec_div.style.width = "100vw"
+            first_sec_div.style.position = "absolute"
+            first_sec_div.style.top = "0"
+
+
+            function rectTop(el) {
+                var rect = el.getBoundingClientRect();
+
+                return rect.top
+            }
+
+            function intro() {
+                let counter = 0
+
+                function loop() {
+                    counter++
+
+                    first_sec_div.style.opacity = (100 - counter) / 100
+
+                    if (counter <= 100) {
+                        setTimeout(loop, 10)
+                    }
+                }
+
+                loop()
+
+                anime({
+                    targets: '.menu_pc',
+                    height: '50px',
+                    easing: 'easeInOutQuad',
+                    direction: 'normal',
+                })
+
+                anime({
+                    targets: '.menu_pc_img',
+                    translateY: {
+                        value: -100,
+                        duration: 0
+                    },
+                    easing: 'easeInOutQuad',
+                    direction: 'normal',
+                })
+
+                anime({
+                    targets: '.menu_pc_img',
+                    translateY: 0,
+                    easing: 'easeInOutQuad',
+                    direction: 'normal',
+                })
+
+
+            }
+
+            function second_secf() {
+                anime({
+                    targets: '.second_sec_sec_h2',
+                    color: "#ba7a08",
+                    loop: 1,
+                    easing: 'easeInOutQuad',
+                    duration: 1200,
+                    webkitTextStrokeWidth: "1px",
+                    delay: 200
+                })
+
+
+                console.log(secondFlag)
+            }
+
+            let secondFlag = false
+
+            function main() {
+                second_sec_sec.style.marginTop = (window.innerHeight - 50 - second_sec_sec.offsetHeight) / 2 + "px"
+
+
+                if (rectTop(second_sec) <= 60 && !secondFlag) {
+                    secondFlag = true
+                    second_secf()
+                }
+
+
+                setTimeout(main, 10)
+            }
+
+
+            main()
+            intro()
+        </script>
+    </main>
+</body>
+<style>
+    * {
+        border: none;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+    }
+    
+    @media (min-width: 769px) {
+        body {
+            margin: 0;
+        }
+
+        .first_sec {
+            height: 100vh;
+            width: 100vw;
+
+            opacity: 1;
+
+            background-color: white;
+
+            background-image: url("{% static 'img/home/chakchak_main.png' %}");
+            background-repeat: no-repeat;
+            background-position: center;
+
+        }
+
+        .second_sec {
+
+        }
+
+        .second_sec h2 {
+            font-family: Roboto, sans-serif;
+            color: #402503;
+            text-align: center;
+            font-size: 9em;
+            font-weight: bold;
+            margin: 0;
+            -webkit-text-stroke-color: #402503;
+            -webkit-text-stroke-width: 0;
+        }
+    }
+</style>
+</html>
