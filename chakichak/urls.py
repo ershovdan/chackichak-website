@@ -5,5 +5,5 @@ import home_app.urls
 
 urlpatterns = [
     re_path('admin/', admin.site.urls),
-    re_path('/', include(home_app.urls, namespace="home_app")),
+    re_path('', include(home_app.urls, namespace="home_app")),
 ]
