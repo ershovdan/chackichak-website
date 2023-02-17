@@ -1,15 +1,19 @@
 {% load static %}
-<div style="position: fixed; top: 0; left: 0; width: 100vw; height: 0; display: grid; background-color: #983f09; z-index: 100;
-    "
+<div style="position: fixed; top: 0; left: 0; width: 100vw; height: 0; display: grid; background-color: #983f09; z-index: 100;"
      class="menu_pc">
     <section style="display: grid; overflow-y: hidden; grid-template-columns: 1fr 1fr 100px 1fr 1fr; text-align: center; font-family: Roboto, sans-serif;
             font-weight: bold;">
-        <a href="" style="overflow-y: hidden; grid-column-start: 1; grid-column-end: 1; text-decoration: none; text-underline: none; color: #402503;"><p>ABOUT</p></a>
-        <a href="" style="overflow-y: hidden; grid-column-start: 2; grid-column-end: 2; text-decoration: none; text-underline: none; color: #402503;"><p>PRODUCTS</p></a>
-        <a href="/contacts" style="overflow-y: hidden; grid-column-start: 4; grid-column-end: 4; text-decoration: none; text-underline: none; color: #402503;"><p>CONTACTS</p></a>
-        <a href="" style="overflow-y: hidden; grid-column-start: 5; grid-column-end: 5; text-decoration: none; text-underline: none; color: #402503;"><p>MORE</p></a>
+        <a href="" style="overflow-y: hidden; grid-column-start: 1; background-color: rgb(152, 63, 9); grid-column-end: 1; text-decoration: none; text-underline: none; color: #402503;"><p>ABOUT</p></a>
+        <a href="" style="overflow-y: hidden; grid-column-start: 2; background-color: rgb(152, 63, 9); grid-column-end: 2; text-decoration: none; text-underline: none; color: #402503;"><p>PRODUCTS</p></a>
+        <a class="menu_pc_contacts" href="/contacts" id="contacts" style="overflow-y: hidden; background-color: rgb(152, 63, 9); grid-column-start: 4; grid-column-end: 4; text-decoration: none; text-underline: none; color: #402503;"><p>CONTACTS</p></a>
+        <a href="" style="overflow-y: hidden; grid-column-start: 5; background-color: rgb(152, 63, 9); grid-column-end: 5; text-decoration: none; text-underline: none; color: #402503;"><p>MORE</p></a>
     </section>
-    <div style="width: 100px; height: 100px; position: fixed; top: 0; left: calc(50vw - 50px); overflow-y: hidden" class="menu_pc_img">
-        <a href="/"><img width="100px" src="{% static 'img/home/circle.png' %}" style="grid-column-start: 2; grid-column-end: 2;"></a>
+    <div style="width: 100px; height: 100px; position: fixed; top: 0; left: calc(50vw - 50px); overflow-y: hidden;" class="menu_pc_img">
+        <a href="/" style="height: 100%; display: block; overflow-y: hidden; cursor: pointer;"><img width="100px" src="{% static 'img/home/circle.png' %}" style="grid-column-start: 2; grid-column-end: 2;"></a>
     </div>
 </div>
+
+<script src="{% static 'js/anime-master/lib/anime.min.js' %}"></script>
+<script>
+
+</script>

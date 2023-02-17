@@ -11,11 +11,12 @@
         {% include "blocks/menu/menu_pc.html" %}
 
         <section class="first_sec" id="first_sec">
-            <div style="background-color: white; opacity: 1" id="first_sec_div"></div>
+            <img src="{% static 'img/home/chakchak_tr.gif' %}" style="position: absolute; width: 40vw; left: 2vw; top: calc(50px + 2vw);" id="chakchak_tr">
+            <div style="opacity: 1" id="first_sec_div"></div>
         </section>
 
         <section class="second_sec" id="second_sec" style="height: calc(100vh - 50px); width: 100vw;">
-            <section id="second_sec_sec">
+            <section id="second_sec_sec" class="second_sec_sec">
                 <h2>JUST A</h2>
                 <h2 class="second_sec_sec_h2">HONEY</h2>
                 <h2>SWEET</h2>
@@ -24,12 +25,16 @@
 
         <video src="{% static 'img/home/honey.mp4' %}" muted autoplay loop id="honey_animation" style=""></video>
 
+        <div id="footer_pc" style="display: none; margin-top: 50px;">{% include "blocks/footer/footer_pc.html" %}</div>
+
         <script>
             let first_sec = document.getElementById("first_sec")
             let second_sec = document.getElementById("second_sec")
             let second_sec_sec = document.getElementById("second_sec_sec")
             let first_sec_div = document.getElementById("first_sec_div")
             let honey_animation = document.getElementById("honey_animation")
+            let chakchak_tr = document.getElementById("chakchak_tr")
+            let footer_pc = document.getElementById("footer_pc")
 
             honey_animation.style.position = "fixed"
             honey_animation.style.zIndex = "-20"
@@ -50,18 +55,6 @@
 
             function intro() {
                 let counter = 0
-
-                function loop() {
-                    counter++
-
-                    first_sec_div.style.opacity = (100 - counter) / 100
-
-                    if (counter <= 100) {
-                        setTimeout(loop, 10)
-                    }
-                }
-
-                loop()
 
                 anime({
                     targets: '.menu_pc',
@@ -98,11 +91,10 @@
                     easing: 'easeInOutQuad',
                     duration: 1200,
                     webkitTextStrokeWidth: "1px",
-                    delay: 200
+                    delay: 300
                 })
 
-
-                console.log(secondFlag)
+                setTimeout(function () {footer_pc.style.display = "block"}, 700)
             }
 
             let secondFlag = false
@@ -110,6 +102,7 @@
             function main() {
                 second_sec_sec.style.marginTop = (window.innerHeight - 50 - second_sec_sec.offsetHeight) / 2 + "px"
 
+                chakchak_tr.style.top = "calc(60vh - " + chakchak_tr.offsetHeight + "px)"
 
                 if (rectTop(second_sec) <= 60 && !secondFlag) {
                     secondFlag = true
@@ -130,7 +123,6 @@
     * {
         border: none;
         overflow-x: hidden;
-        scroll-behavior: smooth;
     }
     
     @media (min-width: 769px) {
@@ -144,16 +136,15 @@
 
             opacity: 1;
 
-            background-color: white;
+            background-color: black;
 
-            background-image: url("{% static 'img/home/chakchak_main.png' %}");
+            background-image: url("{% static 'img/home/chakchak_main.jpg' %}");
             background-repeat: no-repeat;
-            background-position: center;
+            background-position: left;
 
-        }
-
-        .second_sec {
-
+            -moz-box-shadow: inset 0 -10px 10px -10px #000000;
+            -webkit-box-shadow: inset 0 -10px 10px -10px #000000;
+            box-shadow: inset 0 -10px 10px -10px #000000;
         }
 
         .second_sec h2 {

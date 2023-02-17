@@ -9,6 +9,21 @@
 <body>
     <main class="pc_view">
         {% include "blocks/menu/menu_pc.html" %}
+            <div class="pc_view_div">
+                <a class="inst_a" href="">
+                    <div class="inst">
+                        <div style="margin-top: 2.5vw; height: 12vw; display: flex; justify-content: center;"><img src="{% static 'img/contacts/inst_logo.png' %}"></div>
+                    </div>
+                </a>
+                <a class="tiktok_a" href="">
+                    <div class="tiktok">
+                        <div style="margin-top: 2.5vw; height: 12vw; display: flex; justify-content: center;"><img src="{% static 'img/contacts/tiktok_logo.png' %}"></div>
+                    </div>
+                </a>
+        </div>
+
+        {% include "blocks/footer/footer_pc.html" %}
+
     </main>
 </body>
 <style>
@@ -22,6 +37,120 @@
         body {
             margin: 0;
         }
+
+        .pc_view {
+            height: calc(100vh - 50px);
+            margin-top: 50px;
+            background-color: white;
+        }
+
+        .pc_view_div {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw;
+            grid-template-rows: 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw 5vw;
+            column-gap: 1vw;
+            row-gap: 1vw;
+
+            overflow-y: hidden;
+        }
+
+        .inst {
+            grid-column-start: 2;
+            grid-column-end: 5;
+            grid-row-start: 2;
+            grid-row-end: 5;
+
+            height: 17vw;
+
+            overflow-y: hidden;
+
+            background-image: url("{% static 'img/contacts/inst_bg.jpg' %}");
+            background-position: bottom;
+            background-repeat: no-repeat;
+        }
+
+        .inst_a {
+            grid-column-start: 2;
+            grid-column-end: 5;
+            grid-row-start: 2;
+            grid-row-end: 5;
+
+            width: 17vw;
+
+            overflow-y: hidden;
+        }
+
+        .tiktok {
+            grid-column-start: 2;
+            grid-column-end: 5;
+            grid-row-start: 6;
+            grid-row-end: 9;
+
+            height: 17vw;
+
+            overflow-y: hidden;
+
+            background-color: black;
+        }
+
+        .tiktok_a {
+            grid-column-start: 2;
+            grid-column-end: 5;
+            grid-row-start: 6;
+            grid-row-end: 9;
+
+            width: 17vw;
+
+            overflow-y: hidden;
+        }
+
+        .pc_view_div div {
+            border-radius: 40px;
+        }
     }
 </style>
+<script src="{% static 'js/anime-master/lib/anime.min.js' %}"></script>
+<script>
+
+    anime({
+        targets: '.menu_pc',
+        height: '50px',
+        easing: 'easeInOutQuad',
+        direction: 'normal',
+        duration: 0
+    })
+
+    anime({
+        targets: '.inst_a',
+        translateX: '-1000px',
+        easing: 'easeInOutQuad',
+        duration: 0
+    })
+
+    anime({
+        targets: '.tiktok_a',
+        translateX: '-1000px',
+        easing: 'easeInOutQuad',
+        duration: 0
+    })
+
+    anime({
+        targets: '.inst_a',
+        translateX: '0px',
+        easing: 'easeInOutQuad',
+        delay: 1,
+        duration: 700
+    })
+
+    anime({
+        targets: '.tiktok_a',
+        translateX: '0px',
+        easing: 'easeInOutQuad',
+        delay: 1,
+        duration: 900
+    })
+
+
+</script>
 </html>
