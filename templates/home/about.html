@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<script src="{% static 'js/anime-master/lib/anime.min.js' %}"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+</head>
+<body>
+    <main class="pc_view">
+        {% include "blocks/menu/menu_pc.html" %}
+        <div class="pc_view_div">
+
+        </div>
+    </main>
+</body>
+<style>
+    * {
+        border: none;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+    }
+
+    @media (min-width: 769px) {
+        body {
+            margin: 0;
+        }
+
+        .pc_view {
+            height: calc(100vh - 50px);
+            margin-top: 50px;
+            background-color: white;
+        }
+
+        .pc_view_div {
+            height: 100vh;
+
+            overflow-y: hidden;
+        }
+    }
+</style>
+<script>
+    anime({
+        targets: '.menu_pc',
+        height: '50px',
+        easing: 'easeInOutQuad',
+        direction: 'normal',
+        duration: 0
+    })
+
+    anime({
+        targets: '.menu_pc_about p',
+        translateY: '-100px',
+        easing: 'easeInOutQuad',
+        direction: 'normal',
+        duration: 0
+    })
+
+    anime({
+        targets: '.menu_pc_about p',
+        translateY: '0px',
+        easing: 'easeInOutQuad',
+        direction: 'normal',
+        duration: 700
+    })
+
+    anime({
+        targets: '.menu_pc_about',
+        background: 'rgb(124,51,7)',
+        color: '#2d1a02',
+        easing: 'easeInOutQuad',
+        direction: 'normal',
+        duration: 2000,
+        delay: 200
+    })
+</script>
+</html>

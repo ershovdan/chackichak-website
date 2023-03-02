@@ -1,0 +1,125 @@
+{% load static %}
+<div style="position: fixed; top: 0; left: 0; width: 100vw; height: 200px; z-index: 100;"
+     class="menu_mobile">
+
+    <div style="width: 150px; height: 150px; position: fixed; top: 10px; left: 10px; overflow-y: hidden;" class="menu_mobile_img">
+        <a href="/" style="height: 100%; display: block; overflow-y: hidden; cursor: pointer;"><img width="150px" src="{% static 'img/home/circle.png' %}" style="grid-column-start: 2; grid-column-end: 2;"></a>
+    </div>
+
+    <div style="width: 10vw; height: 10vw; position: fixed; top: 20px; left: calc(90vw - 35px); overflow-y: hidden;" class="menu_mobile_icon" id="menu_mobile_icon"><img style="width: 10vw; height: 10vw;" src="{% static 'img/blocks/menu_icon.png' %}"></div>
+</div>
+
+<div class="menu_mobile_bg" style="position: absolute; top: 0; left: 0; width: 100vw; opacity: .9; background-color: black; z-index: 190;"></div>
+
+<div style="position: absolute; display: flex; flex-direction: column; justify-content: space-around; height: 100vh; z-index: 200;" class="mobile_menu_list">
+    <a href="/"><p>HOME</p></a>
+    <a href="/"><p>ABOUT</p></a>
+    <a href="/"><p>PRODUCTS</p></a>
+    <a href="/"><p>CONTACTS</p></a>
+    <a href="/"><p>MORE</p></a>
+    <a><p></p></a>
+    <a class="mobile_menu_list_back" id="mobile_menu_list_back"><p>BACK</p></a>
+</div>
+
+<script src="{% static 'js/anime-master/lib/anime.min.js' %}"></script>
+
+<style>
+    .mobile_menu_list a {
+        width: 100vw;
+        text-decoration: none;
+        color: white;
+    }
+
+    .mobile_menu_list a p {
+        font-family: Roboto, sans-serif;
+        font-size: 5em;
+        text-align: center;
+    }
+</style>
+
+<script>
+    anime({
+        targets: '.mobile_menu_list',
+        translateY: -4000,
+        easing: 'easeInOutQuad',
+        direction: 'normal',
+        duration: 0
+    })
+
+    function disableScroll() {
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft
+
+            window.onscroll = function() {
+                window.scrollTo(scrollLeft, scrollTop);
+            }
+    }
+
+    function enableScroll() {
+        window.onscroll = function() {};
+    }
+
+
+    document.getElementById("menu_mobile_icon").onclick = function () {
+        anime({
+            targets: '.menu_mobile_icon',
+            translateX: {
+                value: 300,
+                duration: 500
+            },
+            easing: 'easeInOutQuad',
+            direction: 'normal',
+        })
+
+        anime({
+            targets: '.menu_mobile_bg',
+            height: window.innerHeight + "px",
+            easing: 'easeInOutQuad',
+            direction: 'normal',
+        })
+
+        disableScroll()
+
+        anime({
+            targets: '.mobile_menu_list',
+            translateY: 0,
+            easing: 'easeInOutQuad',
+            direction: 'normal',
+            duration: 1000
+        })
+    }
+
+    console.log(document.getElementById("mobile_menu_list_back"))
+
+    document.getElementById("mobile_menu_list_back").onclick = function () {
+
+
+        enableScroll();
+
+        anime({
+            targets: '.mobile_menu_list',
+            translateY: -4000,
+            easing: 'easeInOutQuad',
+            direction: 'normal',
+            duration: 1000
+        })
+
+        anime({
+            targets: '.menu_mobile_bg',
+            height: 0,
+            easing: 'easeInOutQuad',
+            direction: 'normal',
+        })
+
+        anime({
+            targets: '.menu_mobile_icon',
+            translateX: {
+                value: 0,
+                duration: 500
+            },
+            easing: 'easeInOutQuad',
+            direction: 'normal',
+            delay: 500
+        })
+    }
+</script>

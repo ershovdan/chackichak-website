@@ -10,14 +10,28 @@
     <main class="pc_view">
         {% include "blocks/menu/menu_pc.html" %}
             <div class="pc_view_div">
-                <a class="inst_a" href="">
+                <a class="inst_a" href="https://www.instagram.com/chakchak.ja/" target="_blank">
                     <div class="inst">
                         <div style="margin-top: 2.5vw; height: 12vw; display: flex; justify-content: center;"><img src="{% static 'img/contacts/inst_logo.png' %}"></div>
                     </div>
                 </a>
-                <a class="tiktok_a" href="">
+                <a class="tiktok_a" href="" target="_blank">
                     <div class="tiktok">
                         <div style="margin-top: 2.5vw; height: 12vw; display: flex; justify-content: center;"><img src="{% static 'img/contacts/tiktok_logo.png' %}"></div>
+                    </div>
+                </a>
+                <div class="email">
+                    <p style="color: white;">somename@somedomain.com</p>
+                </div>
+                <a class="telegram_a" href="" target="_blank">
+                    <div class="telegram">
+                        <div style="margin-top: 2.5vw; height: 12vw; display: flex; justify-content: center;"><img src="{% static 'img/contacts/telegram_logo.png' %}"></div>
+                    </div>
+                </a>
+
+                <a class="whatsapp_a" href="" target="_blank">
+                    <div class="whatsapp">
+                        <div style="margin-top: 2.5vw; height: 12vw; display: flex; justify-content: center;"><img src="{% static 'img/contacts/whatsapp_logo.png' %}"></div>
                     </div>
                 </a>
         </div>
@@ -105,20 +119,113 @@
             overflow-y: hidden;
         }
 
+        .email {
+            grid-column-start: 8;
+            grid-column-end: 17;
+            grid-row-start: 2;
+            grid-row-end: 5;
+
+            background-color: black;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .email p {
+            justify-content: center;
+            font-family: Roboto, sans-serif;
+            font-size: 2.5em;
+
+            display: inherit;
+        }
+
         .pc_view_div div {
             border-radius: 40px;
         }
+
+        .telegram {
+            grid-column-start: 8;
+            grid-column-end: 12;
+            grid-row-start: 6;
+            grid-row-end: 9;
+
+            height: 17vw;
+
+            overflow-y: hidden;
+
+            background-color: #2AABEE;
+        }
+
+        .telegram_a {
+            grid-column-start: 8;
+            grid-column-end: 12;
+            grid-row-start: 6;
+            grid-row-end: 9;
+
+            width: 17vw;
+
+            overflow-y: hidden;
+        }
+
+        .whatsapp {
+            grid-column-start: 14;
+            grid-column-end: 18;
+            grid-row-start: 6;
+            grid-row-end: 9;
+
+            height: 17vw;
+
+            overflow-y: hidden;
+
+            background-color: #25D366;
+        }
+
+        .whatsapp_a {
+            grid-column-start: 14;
+            grid-column-end: 18;
+            grid-row-start: 6;
+            grid-row-end: 9;
+
+            width: 17vw;
+
+            overflow-y: hidden;
+        }
     }
 </style>
-<script src="{% static 'js/anime-master/lib/anime.min.js' %}"></script>
 <script>
-
     anime({
         targets: '.menu_pc',
         height: '50px',
         easing: 'easeInOutQuad',
         direction: 'normal',
         duration: 0
+    })
+
+    anime({
+        targets: '.menu_pc_contacts p',
+        translateY: '-100px',
+        easing: 'easeInOutQuad',
+        direction: 'normal',
+        duration: 0
+    })
+
+    anime({
+        targets: '.menu_pc_contacts p',
+        translateY: '0px',
+        easing: 'easeInOutQuad',
+        direction: 'normal',
+        duration: 700
+    })
+
+    anime({
+        targets: '.menu_pc_contacts',
+        background: 'rgb(124,51,7)',
+        color: '#2d1a02',
+        easing: 'easeInOutQuad',
+        direction: 'normal',
+        duration: 2000,
+        delay: 200
     })
 
     anime({
@@ -131,6 +238,27 @@
     anime({
         targets: '.tiktok_a',
         translateX: '-1000px',
+        easing: 'easeInOutQuad',
+        duration: 0
+    })
+
+    anime({
+        targets: '.email',
+        translateY: '-600px',
+        easing: 'easeInOutQuad',
+        duration: 0
+    })
+
+    anime({
+        targets: '.telegram_a',
+        translateY: '1500px',
+        easing: 'easeInOutQuad',
+        duration: 0
+    })
+
+    anime({
+        targets: '.whatsapp_a',
+        translateX: '1000px',
         easing: 'easeInOutQuad',
         duration: 0
     })
@@ -151,6 +279,30 @@
         duration: 900
     })
 
+
+    anime({
+        targets: '.email',
+        translateY: '0px',
+        easing: 'easeInOutQuad',
+        delay: 1,
+        duration: 800
+    })
+
+    anime({
+        targets: '.telegram_a',
+        translateY: '0px',
+        easing: 'easeInOutQuad',
+        delay: 1,
+        duration: 800
+    })
+
+    anime({
+        targets: '.whatsapp_a',
+        translateX: '0px',
+        easing: 'easeInOutQuad',
+        delay: 1,
+        duration: 500
+    })
 
 </script>
 </html>

@@ -7,7 +7,7 @@
     <title>Chaki Chak</title>
 </head>
 <body>
-    <main class="pc_view">
+    <main class="pc_view" id="pc_view">
         {% include "blocks/menu/menu_pc.html" %}
 
         <section class="first_sec" id="first_sec">
@@ -26,6 +26,36 @@
         <video src="{% static 'img/home/honey.mp4' %}" muted autoplay loop id="honey_animation" style=""></video>
 
         <div id="footer_pc" style="display: none; margin-top: 50px;">{% include "blocks/footer/footer_pc.html" %}</div>
+
+        <style>
+            .first_sec {
+                height: 100vh;
+                width: 100vw;
+
+                opacity: 1;
+
+                background-color: black;
+
+                background-image: url("{% static 'img/home/chakchak_main.jpg' %}");
+                background-repeat: no-repeat;
+                background-position: left;
+
+                -moz-box-shadow: inset 0 -10px 10px -10px #000000;
+                -webkit-box-shadow: inset 0 -10px 10px -10px #000000;
+                box-shadow: inset 0 -10px 10px -10px #000000;
+            }
+
+            .second_sec h2 {
+                font-family: Roboto, sans-serif;
+                color: #402503;
+                text-align: center;
+                font-size: 9em;
+                font-weight: bold;
+                margin: 0;
+                -webkit-text-stroke-color: #402503;
+                -webkit-text-stroke-width: 0;
+            }
+        </style>
 
         <script>
             let first_sec = document.getElementById("first_sec")
@@ -46,7 +76,6 @@
             first_sec_div.style.position = "absolute"
             first_sec_div.style.top = "0"
 
-
             function rectTop(el) {
                 var rect = el.getBoundingClientRect();
 
@@ -54,8 +83,6 @@
             }
 
             function intro() {
-                let counter = 0
-
                 anime({
                     targets: '.menu_pc',
                     height: '50px',
@@ -79,8 +106,6 @@
                     easing: 'easeInOutQuad',
                     direction: 'normal',
                 })
-
-
             }
 
             function second_secf() {
@@ -118,45 +143,108 @@
             intro()
         </script>
     </main>
+
+    <main class="mobile_view" id="mobile_view">
+        {% include "blocks/menu/menu_mobile.html" %}
+
+        <section class="first_sec" id="first_sec">
+            <img src="{% static 'img/home/chakchak_tr.gif' %}" style="position: absolute; width: 80vw; left: 10vw; top: 20vh" id="chakchak_tr">
+            <div style="opacity: 1" id="first_sec_div"></div>
+        </section>
+
+        <style>
+            .first_sec {
+                height: 100vh;
+                width: 100vw;
+
+                opacity: 1;
+
+                background-color: black;
+
+                background-image: url("{% static 'img/home/chakchak_main.jpg' %}");
+                background-repeat: no-repeat;
+                background-position: bottom;
+
+
+                -moz-box-shadow: inset 0 -10px 10px -10px #000000;
+                -webkit-box-shadow: inset 0 -10px 10px -10px #000000;
+                box-shadow: inset 0 -10px 10px -10px #000000;
+            }
+        </style>
+
+        <script>
+            function intro() {
+                anime({
+                    targets: '.menu_mobile_img',
+                    translateX: {
+                        value: 1000,
+                        duration: 0
+                    },
+                    easing: 'easeInOutQuad',
+                    direction: 'normal',
+                })
+
+                anime({
+                    targets: '.menu_mobile_img',
+                    translateX: 0,
+                    easing: 'easeInOutQuad',
+                    direction: 'normal',
+                    duration: 1000
+                })
+
+                anime({
+                    targets: '.menu_mobile_icon',
+                    translateY: {
+                        value: -300,
+                        duration: 0
+                    },
+                    easing: 'easeInOutQuad',
+                    direction: 'normal',
+                })
+
+                anime({
+                    targets: '.menu_mobile_icon',
+                    translateY: 0,
+                    easing: 'easeInOutQuad',
+                    direction: 'normal',
+                    duration: 600,
+                    delay: 400
+                })
+            }
+
+            intro()
+        </script>
+    </main>
 </body>
+<script>
+    let removeFlag = false
+
+    function view() {
+        if (!removeFlag) {
+            if (window.screen.width < 769) {
+                document.getElementById("pc_view").remove()
+                removeFlag = true
+            } else {
+
+                document.getElementById("mobile_view").remove()
+                removeFlag = true
+            }
+
+            setTimeout(view, 10)
+        }
+    }
+
+    setTimeout(view, 10)
+</script>
 <style>
     * {
         border: none;
         overflow-x: hidden;
     }
-    
-    @media (min-width: 769px) {
-        body {
-            margin: 0;
-        }
 
-        .first_sec {
-            height: 100vh;
-            width: 100vw;
-
-            opacity: 1;
-
-            background-color: black;
-
-            background-image: url("{% static 'img/home/chakchak_main.jpg' %}");
-            background-repeat: no-repeat;
-            background-position: left;
-
-            -moz-box-shadow: inset 0 -10px 10px -10px #000000;
-            -webkit-box-shadow: inset 0 -10px 10px -10px #000000;
-            box-shadow: inset 0 -10px 10px -10px #000000;
-        }
-
-        .second_sec h2 {
-            font-family: Roboto, sans-serif;
-            color: #402503;
-            text-align: center;
-            font-size: 9em;
-            font-weight: bold;
-            margin: 0;
-            -webkit-text-stroke-color: #402503;
-            -webkit-text-stroke-width: 0;
-        }
+    body {
+        margin: 0;
     }
+
 </style>
 </html>
